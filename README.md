@@ -3,5 +3,5 @@
 
 Projekt für Webtechnologien - HTWG-Konstanz
 
-Markus Bühler 
+Markus Bühler |
 Matrikelnummer: 283896
