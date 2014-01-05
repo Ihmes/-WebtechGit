@@ -5,21 +5,76 @@
 <head>
     <title>@title</title>
     <link rel='shortcut icon' type='image/png' href='@routes.Assets.at("images/favicon.png")'>
-    <link rel='stylesheet' href='@routes.WebJarAssets.at(WebJarAssets.locate("bootstrap.min.css"))'>
-    <link rel='stylesheet' href='@routes.Assets.at("stylesheets/index.css")'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel='stylesheet' media='screen' href='@routes.Assets.at("css/bootstrap.css")'>
+    <link rel='stylesheet' media='screen' href='@routes.Assets.at("css/main.css")'>
+
     <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("jquery.min.js"))'></script>
+    <script type='text/javascript' src='@routes.Assets.at("js/bootstrap.min.js")'></script>
+
     <script type="text/javascript" src="@routes.MessageController.javascriptRoutes"></script>
 </head>
 <body>
-    <div class="navbar navbar-fixed-top">
-        <div class="navbar-inner">
-            <div class="container-fluid">
-                <a id="titleLink" class="brand" href="/">@title</a>
+
+    <div id="wrapper">
+        <nav class="navbar navbar-inverse" role="navigation">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#"><img src='@routes.Assets.at("images/Logo_klein.png")' /></a>
             </div>
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-9">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">Home</a></li>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">blavla</a></li>
+                </ul>
+                <div class="loginPanel">
+                    <span class="btn btn-large btn-success">Anmelden</span>
+                </div>
+
+            </div>
+        </nav>
+
+        <div class="container">
+            @content
         </div>
+
     </div>
-    <div class="container">
-        @content
+
+
+
+    <div id="footerSection">
+        <div class="container">
+            <div class="row">
+                <div class="span3">
+                    <h5>ACCOUNT</h5>
+                    <a href="#">Impressum</a>
+                    <a href="#">Kontakt</a>
+                    <a href="#">AGB's</a>
+                    </div>
+                <div class="span3">
+                    <h5>INFORMATION</h5>
+                    <a href="contact.html">CONTACT</a>
+                    <a href="register.html">REGISTRATION</a>
+                    <a href="legal_notice.html">LEGAL NOTICE</a>
+                    <a href="tac.html">TERMS AND CONDITIONS</a>
+                    <a href="faq.html">FAQ</a>
+                </div>
+                <div class="span3">
+                    <h5>OUR OFFERS</h5>
+                    <a href="#">NEW PRODUCTS</a>
+                    <a href="#">TOP SELLERS</a>
+                    <a href="special_offer.html">SPECIAL OFFERS</a>
+                    <a href="#">MANUFACTURERS</a>
+                    <a href="#">SUPPLIERS</a>
+                </div>
+                <div id="socialMedia" class="span3 pull-right">
+                    <img src='@routes.Assets.at("images/Logo_grau.png")' />
+                </div>
+            </div>
+        </div><!-- Container End -->
     </div>
+
 </body>
 </html>
