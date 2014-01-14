@@ -9,9 +9,11 @@
 
     <link rel='stylesheet' media='screen' href='@routes.Assets.at("css/bootstrap.css")'>
     <link rel='stylesheet' media='screen' href='@routes.Assets.at("css/main.css")'>
+    <link rel='stylesheet' media='screen' href='@routes.Assets.at("css/main_rwd.css")'>
 
     <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("jquery.min.js"))'></script>
     <script type='text/javascript' src='@routes.Assets.at("js/bootstrap.min.js")'></script>
+    <script type='text/javascript' src='@routes.Assets.at("js/menu.js")'></script>
 
     <script type="text/javascript" src="@routes.MessageController.javascriptRoutes"></script>
 </head>
@@ -20,17 +22,22 @@
     <div id="wrapper">
         <nav class="navbar navbar-inverse" role="navigation">
             <div class="navbar-header">
-                <a class="navbar-brand" href="#"><img src='@routes.Assets.at("images/Logo_klein.png")' /></a>
+                <a class="navbar-brand" href="/"><img src='@routes.Assets.at("images/Logo_klein.png")' /></a>
+                <button id="navRWD" type="button" class="btn btn-navbar collapsed" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
             </div>
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-9">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">Home</a></li>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">blavla</a></li>
+                    <li class="active"><a href="/">Home</a></li>
+                    <li><a href="#">Fahrt finden</a></li>
+                    <li><a href="#">Fahrt eintragen</a></li>
                 </ul>
                 <div class="loginPanel">
-                    <span class="btn btn-large btn-success">Anmelden</span>
+                   <a href="/anmelden"> <span class="btn btn-large btn-success">Anmelden</span></a>
                 </div>
 
             </div>
@@ -46,34 +53,22 @@
 
     <div id="footerSection">
         <div class="container">
-            <div class="row">
+            <div class="pull-left">
                 <div class="span3">
-                    <h5>ACCOUNT</h5>
-                    <a href="#">Impressum</a>
-                    <a href="#">Kontakt</a>
-                    <a href="#">AGB's</a>
-                    </div>
-                <div class="span3">
-                    <h5>INFORMATION</h5>
-                    <a href="contact.html">CONTACT</a>
-                    <a href="register.html">REGISTRATION</a>
-                    <a href="legal_notice.html">LEGAL NOTICE</a>
-                    <a href="tac.html">TERMS AND CONDITIONS</a>
-                    <a href="faq.html">FAQ</a>
-                </div>
-                <div class="span3">
-                    <h5>OUR OFFERS</h5>
-                    <a href="#">NEW PRODUCTS</a>
-                    <a href="#">TOP SELLERS</a>
-                    <a href="special_offer.html">SPECIAL OFFERS</a>
-                    <a href="#">MANUFACTURERS</a>
-                    <a href="#">SUPPLIERS</a>
-                </div>
-                <div id="socialMedia" class="span3 pull-right">
-                    <img src='@routes.Assets.at("images/Logo_grau.png")' />
+                    <h5>Rechtliches</h5>
+                    <ul>
+                        <li><a href="#">Impressum</a></li>
+                        <li><a href="#">Kontakt</a></li>
+                        <li><a href="#">AGB's</a></li>
+                    </ul>
                 </div>
             </div>
-        </div><!-- Container End -->
+            <div id="logoMFG" class="span3 pull-right">
+                Copyright © 2001-2014
+                <img src='@routes.Assets.at("images/Logo_grau.png")' />
+            </div>
+        </div>
+
     </div>
 
 </body>

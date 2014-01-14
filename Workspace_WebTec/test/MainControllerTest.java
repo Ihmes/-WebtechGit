@@ -21,6 +21,7 @@ public class MainControllerTest {
         assertThat(a).isEqualTo(2);
     }
 
+    /*
     @Test
     public void indexTemplateShouldContainTheStringThatIsPassedToIt() {
         running(fakeApplication(), new Runnable() {
@@ -44,5 +45,5 @@ public class MainControllerTest {
             }
         });
     }
-
+    */
 }

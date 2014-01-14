@@ -1,12 +1,22 @@
 #wrapper{width:90%; max-width:1080px; margin: 48px auto 0;}
+
+#footerSection .span3 h5{font-weight: bold;}
+#footerSection .span3 ul{padding:0px;}
+#footerSection .span3 li{list-style-type: none;}
+#footerSection .span3 a{color: #B9B5B5;}
 #footerSection { background: #202020;color: white;padding: 28px 0 44px;bottom: 0px; margin-top: 20px;border-top: 1px solid #444;}
+#logoMFG{padding-left: 20px; color: #B9B5B5;}
+#navRWD {display:none;}
 .loginPanel{float: right;margin: 16.5px 10px;}
 
-.item {color: #666;background: #333;height: 400px;line-height: 400px;font-size: 52px;text-align: center;font-family: "trebuchet ms", sans-serif;}
+.item {color: #666;background: #333;font-size: 52px;text-align: center;font-family: "trebuchet ms", sans-serif;}
 .carousel{margin-top: 20px;}
-.carousel-control{
-	top: 50%;
-}
+.carousel-control{top: 50%;}
+
 .carousel-control{background-image: none!important;}
 .item img{width:100%; height: auto;}
 .center{text-align: center;}
+
+
+.row .col-md-8 .form-group {min-height: 35px!important;}
+.registrierenInfo{padding:10px;font-size: 95%;}

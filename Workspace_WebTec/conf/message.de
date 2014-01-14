@@ -1,0 +1,6 @@
+# Deutsche Texte
+
+# form validation messages
+error.invalid=Ungültig
+error.required=Wert ist erforderlich
+form.error.required=My custom message

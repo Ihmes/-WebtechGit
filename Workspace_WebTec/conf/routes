@@ -10,3 +10,8 @@ GET     /assets/javascripts/routes  controllers.MessageController.javascriptRout
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
 GET     /webjars/*file              controllers.WebJarAssets.at(file)
 
+GET     /anmelden                   controllers.accessController.showAnmelden()
+POST    /anmelden                   controllers.accessController.actionAnmelden()
+
+GET     /registrierung              controllers.accessController.showRegistrierung()
+POST    /registrierung              controllers.accessController.actionRegistrierung()

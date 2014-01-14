@@ -1,0 +1,22 @@
+
+@media (max-width: 400px){
+.input-group-addon{display:none;}
+.input-group {display: block;}
+}
+
+@media (max-width: 500px){
+.btn-lg{ font-size:90%;}
+}
+
+@media (max-width: 260px){
+#logoMFG img{display: none;}
+#logoMFG {font-size: 10px;}
+}
+
+@media (max-width:767px){
+   #navRWD { display:block; float: right; background-color: #0e0e0e; margin: 16px; height: 37px;}
+   #navRWD .icon-bar{margin-bottom: 3px; height: 2px;}
+   .navbar .btn-navbar .icon-bar {display: block;width: 18px; height: 2px;background-color: #f5f5f5;-webkit-border-radius: 1px;-moz-border-radius: 1px;border-radius: 1px;-webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);-moz-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);box-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);}
+}
+
+
