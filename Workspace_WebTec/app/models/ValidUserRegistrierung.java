@@ -8,20 +8,20 @@ import play.data.validation.Constraints.Required;
  */
 public class ValidUserRegistrierung {
 
-        @Required
-        public String vorname;
+    @Required
+    public String vorname;
 
-        @Required
-        public String nachname;
+    @Required
+    public String nachname;
 
-        @Required
-        public String email;
+    @Required
+    public String email;
 
-        @Required
-        public String username;
+    @Required
+    public String username;
 
-        @Required
-        public String password;
-        public String repassword;
-        public boolean remember;
+    @Required
+    public String password;
+    public String repassword;
+    public boolean remember;
 }

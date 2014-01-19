@@ -43,7 +43,7 @@ public class LoginDBHandler {
         String findUserDoc = "";
 
         BasicDBObject query = new BasicDBObject("email", email).append(
-            "password", password);
+                "password", password);
         com.mongodb.DBCursor cursor = coll.find();
         cursor = coll.find(query);
 

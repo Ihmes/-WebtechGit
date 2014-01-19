@@ -78,28 +78,28 @@ public class accessController extends Controller{
         if (regForm.hasErrors()) {
             return badRequest(registrierung.render("Da ist etwas schiefgelaufen : " + regForm.errors()));
         } else {
-                ValidUserRegistrierung newUserData = regForm.get();
+            ValidUserRegistrierung newUserData = regForm.get();
 
-               /**
-                *  Eingebegne Daten Überprüfen
-                */
-                if(!newUserData.password.equals(newUserData.repassword))
-                {
-                    return ok(registrierung.render("Passwort stimmen nicht überein"));
-                }else{
+            /**
+             *  Eingebegne Daten Überprüfen
+             */
+            if(!newUserData.password.equals(newUserData.repassword))
+            {
+                return ok(registrierung.render("Passwort stimmen nicht überein"));
+            }else{
 
-                    /***
-                    *  Verbindung zur Datenbank aufbauen
-                    *  Daten in MongoDB Speichern
-                    */
-                    RegistrierungDBHandler RegInstance = new RegistrierungDBHandler();
-                    RegInstance.getDBCollection();
+                /***
+                 *  Verbindung zur Datenbank aufbauen
+                 *  Daten in MongoDB Speichern
+                 */
+                RegistrierungDBHandler RegInstance = new RegistrierungDBHandler();
+                RegInstance.getDBCollection();
 
-                    //String username, String email, String password, String vorname, String nachname
-                    String StatusMessage = RegInstance.getItemsCheckSave(newUserData.username, newUserData.email, newUserData.password, newUserData.vorname, newUserData.nachname);
+                //String username, String email, String password, String vorname, String nachname
+                String StatusMessage = RegInstance.getItemsCheckSave(newUserData.username, newUserData.email, newUserData.password, newUserData.vorname, newUserData.nachname);
 
-                    return ok(views.html.login.render(StatusMessage));
-                }
+                return ok(views.html.login.render(StatusMessage));
+            }
         }
 
 

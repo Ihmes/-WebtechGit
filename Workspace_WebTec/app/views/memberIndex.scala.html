@@ -1,14 +1,12 @@
-@(message: String)(user:List[User])
-@main("Welcome to Play Framework") {
+@(message: String)
+@main("Memberbereich") {
 
 <div class="well center">
 
-        <div class="alert alert-success">
+    <div class="alert alert-success">
         @message
-            @for(i <- user) {
-                @i.email
-            }
-        </div>
+
+    </div>
 
 </div>
 }

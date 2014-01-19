@@ -25,7 +25,6 @@ public class Finder<T> {
         this.db = db;
     }
 
-
     /**
      * Convenience method for query
      */

@@ -33,9 +33,9 @@ public class UserDB {
         cursor = coll.find(query);
 
         for (DBObject s : cursor) {
-				Userdata.add(new User((String) s.get("vorname"),
-						(String) s.get("nachname"), (String) s.get("email")));
-			}
+            Userdata.add(new User((String) s.get("vorname"),
+                    (String) s.get("nachname"), (String) s.get("email")));
+        }
 
         dbInstance.dispose();
         return Userdata;

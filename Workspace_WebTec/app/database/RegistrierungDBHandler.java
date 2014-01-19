@@ -23,9 +23,9 @@ public class RegistrierungDBHandler {
      *  User Collection aufrufen
      */
     public static void getDBCollection(){
-            DB db = dbInstance.getDB();
-            coll = db.getCollection(COLLECTION_USERS);
-        }
+        DB db = dbInstance.getDB();
+        coll = db.getCollection(COLLECTION_USERS);
+    }
 
     /**
      * Überprüfen ob Email und Username Eindeutig sind
@@ -73,15 +73,15 @@ public class RegistrierungDBHandler {
 
         //Speichern der Daten
 
-            BasicDBObject doc = new BasicDBObject("username", username)
-                    .append("email", email).append("password", password)
-                    //.append("titel", titel).append("fahrertyp", fahrertyp)
-                    //.append("geburtsdatum", geburtsdatum).append("alt", alt)
-                    .append("vorname", vorname).append("nachname", nachname);
-                    //.append("tel", telefon)
-                    //.append("registrierungsdatum", registrierungsdatum);
-            coll.insert(doc);
-            dbInstance.dispose();
+        BasicDBObject doc = new BasicDBObject("username", username)
+                .append("email", email).append("password", password)
+                        //.append("titel", titel).append("fahrertyp", fahrertyp)
+                        //.append("geburtsdatum", geburtsdatum).append("alt", alt)
+                .append("vorname", vorname).append("nachname", nachname);
+        //.append("tel", telefon)
+        //.append("registrierungsdatum", registrierungsdatum);
+        coll.insert(doc);
+        dbInstance.dispose();
 
         return "";
     }

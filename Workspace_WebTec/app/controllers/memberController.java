@@ -21,7 +21,7 @@ public class memberController extends Controller {
 
         String email = session("connected");
         List<User> user = userDB.getUserDataByEmail(email);
-        return ok(views.html.memberIndex.render("Hello " + session("connected"), user));
+        return ok(views.html.memberIndex.render("Hello"));
 
         //return ok(memberIndex.render("Hallo " + email + " Du hast Dich erfolgreich angemeldet!" , user));
     }
