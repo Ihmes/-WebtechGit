@@ -9,13 +9,13 @@ import play.Logger;
 import play.mvc.Result;
 import play.data.Form;
 import play.mvc.Controller;
-import database.UserDB;
+import database.RegistrierungDBHandler;
 import play.data.*;
 import views.html.login;
 import models.ValidUserLogin;
 import views.html.registrierung;
 import play.Plugin.*;
-
+import database.LoginDBHandler;
 
 
 import static play.data.Form.*;
@@ -27,10 +27,11 @@ import static play.data.Form.*;
 public class accessController extends Controller{
 
     public static Result showAnmelden(){
-        return ok(login.render());
+        return ok(login.render(""));
     }
 
     public static Result actionAnmelden(){
+
 
         Form<ValidUserLogin> loginForm = Form.form(ValidUserLogin.class).bindFromRequest();
         loginForm = loginForm.bindFromRequest();
@@ -39,10 +40,26 @@ public class accessController extends Controller{
             return badRequest("Da ist etwas schiefgelaufen : " +loginForm.errors());
         } else {
             ValidUserLogin user = loginForm.get();
-            session().clear();
-            session("email", user.email);
-            return ok(views.html.index.render("Hallo" + user.email +
-                    "Deine Eingaben: " +user.email +" " +user.password +" " + user.remember));
+
+            /***
+             *  Verbindung zur Datenbank aufbauen
+             *  Daten in MongoDB Speichern
+             */
+
+            LoginDBHandler LogInstance = new LoginDBHandler();
+            LogInstance.getDBCollection();
+
+            //String email, String password, Boolean remember
+            boolean Status = LogInstance.getItemsCheckLogin(user.email, user.password, user.remember);
+
+
+
+            if(Status){
+                session("connected", user.email);
+                return redirect("/memberIndex");
+            }else{
+                return ok(views.html.login.render("Password oder Email-Adresse sind falsch"));
+            }
         }
     }
 
@@ -61,28 +78,30 @@ public class accessController extends Controller{
         if (regForm.hasErrors()) {
             return badRequest(registrierung.render("Da ist etwas schiefgelaufen : " + regForm.errors()));
         } else {
-            ValidUserRegistrierung newUserData = regForm.get();
+                ValidUserRegistrierung newUserData = regForm.get();
 
+               /**
+                *  Eingebegne Daten Überprüfen
+                */
+                if(!newUserData.password.equals(newUserData.repassword))
+                {
+                    return ok(registrierung.render("Passwort stimmen nicht überein"));
+                }else{
 
-            UserDB users = UserDB.get();
-            User newUser = users.create(new User("122334434332", newUserData.email, newUserData.password,
-                    newUserData.vorname, newUserData.nachname, false));
+                    /***
+                    *  Verbindung zur Datenbank aufbauen
+                    *  Daten in MongoDB Speichern
+                    */
+                    RegistrierungDBHandler RegInstance = new RegistrierungDBHandler();
+                    RegInstance.getDBCollection();
 
+                    //String username, String email, String password, String vorname, String nachname
+                    String StatusMessage = RegInstance.getItemsCheckSave(newUserData.username, newUserData.email, newUserData.password, newUserData.vorname, newUserData.nachname);
 
-            if (newUser != null) {
-
-                return ok(views.html.login.render());
-            } else {
-                return badRequest(registrierung.render("E-Mail existiert bereits"));
-            }
-
+                    return ok(views.html.login.render(StatusMessage));
+                }
         }
 
 
     }
-
-
-
 }
-
-
