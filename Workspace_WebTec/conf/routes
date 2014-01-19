@@ -15,3 +15,7 @@ POST    /anmelden                   controllers.accessController.actionAnmelden(
 
 GET     /registrierung              controllers.accessController.showRegistrierung()
 POST    /registrierung              controllers.accessController.actionRegistrierung()
+
+GET     /memberIndex                controllers.memberController.showMemberIndex()
+
+

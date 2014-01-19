@@ -18,6 +18,10 @@ public class ValidUserRegistrierung {
         public String email;
 
         @Required
+        public String username;
+
+        @Required
         public String password;
+        public String repassword;
         public boolean remember;
 }
