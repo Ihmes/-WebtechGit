@@ -19,7 +19,10 @@ POST    /registrierung              controllers.accessController.actionRegistrie
 GET     /memberIndex                controllers.memberController.showMemberIndex()
 
 GET     /mfgSuche                   controllers.memberController.showSuche()
+POST    /mfgSuche                   controllers.memberController.actionSuche()
+
 GET     /mfgAnbieten                controllers.memberController.showAnbieterMaske()
+POST    /mfgAnbieten                controllers.memberController.actionAnbieterMaske()
 
 
 

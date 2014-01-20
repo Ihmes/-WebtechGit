@@ -68,7 +68,7 @@ public class RegistrierungDBHandler {
 
         if (!findEmail.isEmpty()) {
             dbInstance.dispose();
-            return "Der Username wurde schon verwendet. Bitte verwende einen anderen!";
+            return "Der Email wurde schon verwendet. Bitte verwende einen andere";
         }
 
         //Speichern der Daten

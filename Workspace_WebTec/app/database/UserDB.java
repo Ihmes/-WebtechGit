@@ -23,26 +23,6 @@ public class UserDB {
 
     }
 
-    public static List<User> getUserDetails(String email){
-
-        List<User> userDetails = new ArrayList();
-        com.mongodb.DBCursor cursor = coll.find();
-        BasicDBObject query = (BasicDBObject) new BasicDBObject("email",
-                email);
-        cursor = coll.find(query);
-
-        for (DBObject s : cursor) {
-            userDetails.add(new User((String) s
-                    .get("vorname"),
-                    (String) s.get("nachname"), (String) s.get("email"), (String) s.get("geburtsdatum")));
-        }
-
-        dbInstance.dispose();
-
-        return userDetails;
-
-    }
-
     public static String getUsernameByEmail(String email)
     {
         coll = db.getCollection(COLLECTION_USERS);
@@ -65,6 +45,51 @@ public class UserDB {
 
         dbInstance.dispose();
         return username;
+    }
+
+    // Funktioniert noch nicht
+    public static String getUserIdByEmail(String email)
+    {
+        coll = db.getCollection(COLLECTION_USERS);
+        String userId = "";
+
+        com.mongodb.DBCursor cursor = coll.find();
+        BasicDBObject query = new BasicDBObject();
+        query.put("email", email);
+
+        cursor = coll.find(query);
+
+
+        for(DBObject s : cursor) {
+            userId = (String) s.get("userId");
+        }
+
+        dbInstance.dispose();
+        return userId;
+    }
+
+    public static String getUserBirthdayByEmail(String email)
+    {
+        coll = db.getCollection(COLLECTION_USERS);
+        String birthday = "";
+
+        com.mongodb.DBCursor cursor = coll.find();
+        BasicDBObject query = new BasicDBObject();
+        query.put("email", email);
+
+        cursor = coll.find(query);
+
+
+        for(DBObject s : cursor) {
+            birthday = (String) s.get("geburtsdatum");
+        }
+
+        if(birthday.isEmpty()) {
+            return "Datenbanl Fehler";
+        }
+
+        dbInstance.dispose();
+        return birthday;
     }
 
 
