@@ -23,5 +23,7 @@ public class ValidUserRegistrierung {
     @Required
     public String password;
     public String repassword;
-    public boolean remember;
+
+    @Required
+    public String geburtsdatum;
 }

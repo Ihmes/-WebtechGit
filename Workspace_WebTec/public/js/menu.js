@@ -16,3 +16,16 @@
        $("#myCarousel").carousel();
    });
 
+   $(function(){
+	$('.form_date').datetimepicker({
+	    format: 'dd-MM-yyyy',
+        language:  'de',
+        weekStart: 1,
+        todayBtn:  1,
+		autoclose: 1,
+		todayHighlight: 1,
+		startView: 2,
+		minView: 2,
+		forceParse: 0
+    });
+    });

@@ -11,35 +11,60 @@ public class UserDB {
 
     public static String COLLECTION_USERS = "User";
     private static ConnectDB dbInstance = new ConnectDB();
-    private static DBCollection coll = null;
+    private static DB db;
+    private static DBCollection coll;
 
     /**
      *  Datenbankverbindung herstellen
      *  User Collection aufrufen
      */
     public static void getDBCollection(){
-        DB db = dbInstance.getDB();
-        coll = db.getCollection(COLLECTION_USERS);
+        db = dbInstance.getDB();
+
     }
 
+    public static List<User> getUserDetails(String email){
 
-    public static List getUserDataByEmail(String email)
-    {
-        getDBCollection();
-        List<User> Userdata = new ArrayList<>();
-
-        BasicDBObject query = new BasicDBObject("email", email);
+        List<User> userDetails = new ArrayList();
         com.mongodb.DBCursor cursor = coll.find();
+        BasicDBObject query = (BasicDBObject) new BasicDBObject("email",
+                email);
         cursor = coll.find(query);
 
         for (DBObject s : cursor) {
-            Userdata.add(new User((String) s.get("vorname"),
-                    (String) s.get("nachname"), (String) s.get("email")));
+            userDetails.add(new User((String) s
+                    .get("vorname"),
+                    (String) s.get("nachname"), (String) s.get("email"), (String) s.get("geburtsdatum")));
         }
 
         dbInstance.dispose();
-        return Userdata;
 
+        return userDetails;
+
+    }
+
+    public static String getUsernameByEmail(String email)
+    {
+        coll = db.getCollection(COLLECTION_USERS);
+        String username = "";
+
+        com.mongodb.DBCursor cursor = coll.find();
+        BasicDBObject query = new BasicDBObject();
+        query.put("email", email);
+
+        cursor = coll.find(query);
+
+
+        for(DBObject s : cursor) {
+            username = (String) s.get("vorname");
+        }
+
+        if(username.isEmpty()) {
+           return "Datenbanl Fehler";
+        }
+
+        dbInstance.dispose();
+        return username;
     }
 
 

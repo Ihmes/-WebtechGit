@@ -33,7 +33,7 @@ public class RegistrierungDBHandler {
      * @param username
      *  @param email
      */
-    public String getItemsCheckSave(String username, String email, String password, String vorname, String nachname){
+    public String getItemsCheckSave(String username, String email, String password, String vorname, String nachname, String geburtsdatum){
 
         String findUsername = "";
         String findEmail = "";
@@ -76,7 +76,7 @@ public class RegistrierungDBHandler {
         BasicDBObject doc = new BasicDBObject("username", username)
                 .append("email", email).append("password", password)
                         //.append("titel", titel).append("fahrertyp", fahrertyp)
-                        //.append("geburtsdatum", geburtsdatum).append("alt", alt)
+                .append("geburtsdatum", geburtsdatum)
                 .append("vorname", vorname).append("nachname", nachname);
         //.append("tel", telefon)
         //.append("registrierungsdatum", registrierungsdatum);

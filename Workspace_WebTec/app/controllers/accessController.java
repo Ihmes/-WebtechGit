@@ -13,6 +13,7 @@ import database.RegistrierungDBHandler;
 import play.data.*;
 import views.html.login;
 import models.ValidUserLogin;
+import views.html.memberIndex;
 import views.html.registrierung;
 import play.Plugin.*;
 import database.LoginDBHandler;
@@ -52,11 +53,11 @@ public class accessController extends Controller{
             //String email, String password, Boolean remember
             boolean Status = LogInstance.getItemsCheckLogin(user.email, user.password, user.remember);
 
-
-
             if(Status){
-                session("connected", user.email);
-                return redirect("/memberIndex");
+                session().clear();
+                session("email", user.email);
+                session("connected", "true");
+                return ok(memberIndex.render("Du hast Dich erfolgreich angemeldet", session("email"),""));
             }else{
                 return ok(views.html.login.render("Password oder Email-Adresse sind falsch"));
             }
@@ -95,10 +96,15 @@ public class accessController extends Controller{
                 RegistrierungDBHandler RegInstance = new RegistrierungDBHandler();
                 RegInstance.getDBCollection();
 
+                String email = newUserData.email;
+                String user = newUserData.username;
                 //String username, String email, String password, String vorname, String nachname
-                String StatusMessage = RegInstance.getItemsCheckSave(newUserData.username, newUserData.email, newUserData.password, newUserData.vorname, newUserData.nachname);
+                String StatusMessage = RegInstance.getItemsCheckSave(newUserData.username, newUserData.email, newUserData.password, newUserData.vorname, newUserData.nachname, newUserData.geburtsdatum);
 
-                return ok(views.html.login.render(StatusMessage));
+                session().clear();
+                session("email", email);
+                session("connected", "true");
+                return ok(views.html.memberIndex.render("Hallo " +  user + " " +StatusMessage, session("email"), user));
             }
         }
 

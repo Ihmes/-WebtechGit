@@ -8,16 +8,15 @@ import java.util.Date;
  */
 public class User extends Entity {
 
-
     public String vorname;
     public String nachname;
     public String email;
+    public String geburtsdatum;
 
-
-    public User(String vorname, String nachname, String email ) {
+    public User(String vorname, String nachname, String email, String geburtsdatum ) {
         this.vorname = vorname;
         this.nachname = nachname;
         this.email = email;
+        this.email = geburtsdatum;
     }
-
 }
