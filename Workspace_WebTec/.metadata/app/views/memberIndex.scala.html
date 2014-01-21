@@ -1,0 +1,40 @@
+@(message: String, email : String, user : String, userDataTrue: String)(userdata:List[User])
+@main("Memberbereich") {
+
+<div class="col-md-3">
+    <ul class="nav nav-pills nav-stacked">
+
+        <li class="active"><a href="/memberIndex">Meine MFG</a></li>
+        <li><a href="/mfgSuche">MFG Suchen</a></li>
+        <li><a href="/mfgAnbieten">MFG Anbieten</a></li>
+        <li><a href="/logout">Logout</a></li>
+    </ul>
+    <hr>
+    <span class="label label-default">Konto: @email / @user</span>
+    <hr>
+</div>
+<div class="col-md-9">
+
+    <div class="well center">
+
+        @if(message){
+        <div class="alert alert-success">
+            @message
+        </div>
+        }
+
+        <ul class="pager">
+            <li><a href="/Profileinstellungen">Kontodaten bearbeiten <span class="glyphicon glyphicon-cog"></span></a></li>
+        </ul>
+
+            @if(userDataTrue){
+                @for(i <- userdata) {
+                <p>@i.vorname</p><hr>
+                <p>@i.nachname</p><hr>
+                <p>@i.email</p><hr>
+                <p>@i.geburtsdatum</p><hr>
+                }
+            }
+    </div>
+</div>
+}

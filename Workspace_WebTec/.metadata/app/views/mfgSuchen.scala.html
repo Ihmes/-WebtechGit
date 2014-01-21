@@ -1,0 +1,74 @@
+@(message: String, email : String, user : String)(mfg:List[ValideMFG])
+@main("MFG Suchen") {
+
+<div class="col-md-3">
+    <ul class="nav nav-pills nav-stacked">
+
+        <li><a href="/memberIndex">Meine MFG</a></li>
+        <li class="active"><a href="/mfgSuche">MFG Suchen</a></li>
+        <li><a href="/mfgAnbieten">MFG Anbieten</a></li>
+        <li><a href="/logout">Logout</a></li>
+    </ul>
+    <hr>
+    <span class="label label-default">Konto: @email / @user</span>
+    <hr>
+</div>
+<div class="col-md-9">
+
+    <div class="well center">
+
+        @if(message){
+        <div class="alert alert-warning">
+            @message
+        </div>
+        }else{
+            @helper.form(routes.memberController.actionSuche) {
+                <form class="navbar-form navbar-left" role="search">
+                    <div class="col-md-5">
+                        <div class="form-group">
+                            <input type="text" name="startort" class="form-control" placeholder="Startort">
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="form-group">
+                            <input type="text" name="zielort"  class="form-control" placeholder="Zielort">
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <button type="submit" class="btn btn-default">Suchen</button>
+                    </div>
+                </form>
+            <hr>
+            }
+        }
+
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Von</th>
+                <th>Nach</th>
+                <th>Datum</th>
+                <th>Zeit</th>
+            </tr>
+            </thead>
+            <tbody>
+            @if(mfg.isEmpty){
+                <p>bla</p>
+            }else{
+                @for(i <- mfg) {
+                <tr>
+                    <td>@i.startort</td>
+                    <td>@i.zielort</td>
+                    <td>@i.datum</td>
+                    <td>@i.uhrzeit</td>
+
+                </tr>
+                }
+            }
+            </tbody>
+        </table>
+
+
+    </div>
+</div>
+}

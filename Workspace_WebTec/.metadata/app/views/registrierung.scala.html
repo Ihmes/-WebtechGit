@@ -1,0 +1,72 @@
+@(content: String)
+@main("Registrieren bei MFG") {
+
+<div class="well">
+    <div class="row">
+        @helper.form(routes.accessController.actionRegistrierung) {
+        <div class="col-md-8">
+                    <h3>Registriere dich jetzt bei MFG</h3>
+            <hr>
+            <form>
+                <fieldset>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon">Vorname</span>
+                            <input name="vorname" type="text" class="form-control" placeholder="Vorname">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon">Name</span>
+                            <input name="nachname" type="text" class="form-control" placeholder="Name">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon">E-Mail</span>
+                            <input name="email" type="email" type="text" class="form-control" placeholder="E-Mail">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon">Username</span>
+                            <input name="username" type="text" type="text" class="form-control" placeholder="Username">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon">Passwort</span>
+                            <input name="password" type="password" type="text" class="form-control" placeholder="Passwort">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon">Passwort wiederholen</span>
+                            <input name="repassword" type="password" type="text" class="form-control" placeholder="Passwort wiederholen">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group date form_date" data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input2" data-link-format="dd-MM-yyyy">
+                            <input class="form-control" name="geburtsdatum" size="16" type="text" value="" readonly placeholder="Geburtsdatum">
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                        </div>
+                        <input type="hidden" id="dtp_input2" value="" /><br/>
+                    </div>
+
+
+                    <button name="submit" type="submit" class="btn btn-default">Registrieren</button>
+                </fieldset>
+            </form>
+        </div>
+        }
+        <div class="col-md-4">
+            <div class="panel-body">
+                @content
+            </div>
+        </div>
+
+
+    </div>
+</div>
+}

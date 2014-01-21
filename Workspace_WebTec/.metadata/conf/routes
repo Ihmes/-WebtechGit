@@ -1,0 +1,33 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+GET     /                           controllers.MainController.index()
+GET     /message                    controllers.MessageController.getMessage()
+GET     /assets/javascripts/routes  controllers.MessageController.javascriptRoutes()
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.at(path="/public", file)
+GET     /webjars/*file              controllers.WebJarAssets.at(file)
+
+GET     /anmelden                   controllers.accessController.showAnmelden()
+POST    /anmelden                   controllers.accessController.actionAnmelden()
+
+GET     /registrierung              controllers.accessController.showRegistrierung()
+POST    /registrierung              controllers.accessController.actionRegistrierung()
+
+GET     /memberIndex                controllers.memberController.showMemberIndex()
+
+GET     /mfgSuche                   controllers.memberController.showSuche()
+POST    /mfgSuche                   controllers.memberController.actionSuche()
+
+GET     /mfgAnbieten                controllers.memberController.showAnbieterMaske()
+POST    /mfgAnbieten                controllers.memberController.actionAnbieterMaske()
+
+GET     /Profileinstellungen        controllers.ProfileinstellungenController.showProfil()
+POST    /Profileinstellungen        controllers.ProfileinstellungenController.actionProfil()
+
+
+GET     /logout                     controllers.LogoutController.logout()
+
+
