@@ -1,0 +1,86 @@
+@(message: String, email : String, user : String)(mfgDetails:List[ValideMFG])
+@main("MFG Details") {
+
+<div class="col-md-3">
+    <ul class="nav nav-pills nav-stacked">
+
+        <li><a href="/memberIndex">Meine MFG</a></li>
+        <li class="active"><a href="/mfgSuche">MFG Suchen</a></li>
+        <li><a href="/mfgAnbieten">MFG Anbieten</a></li>
+        <li><a href="/logout">Logout</a></li>
+    </ul>
+    <hr>
+    <span class="label label-default">Konto: @email / @user</span>
+    <hr>
+</div>
+<div class="col-md-9">
+
+    <div class="well center">
+
+        @if(message){
+        <div class="alert alert-warning">
+            @message
+        </div>
+        }
+
+        @if(mfgDetails.isEmpty){
+        <p>Fehler! Versuch es nochmal</p>
+        }else{
+
+        <table class="table table-striped">
+            <tbody>
+            @for(i <- mfgDetails) {
+            <tr>
+                <td>Startort</td>
+                <td>@i.startort</td>
+            </tr>
+            <tr>
+                <td>Zielort</td>
+                <td>@i.zielort</td>
+            </tr>
+            <tr>
+                <td>Mitfahrer</td>
+                <td>@i.mitfahrer</td>
+            </tr>
+            <tr>
+                <td>Datum</td>
+                <td>@i.datum</td>
+            </tr>
+            <tr>
+                <td>Uhrzeit</td>
+                <td>@i.uhrzeit</td>
+            </tr>
+            <tr>
+                <td>Eingestellt von</td>
+                <td>@i.fahrer</td>
+            </tr>
+
+
+            </tbody>
+        </table>
+        <a href="/mfgDetailAnfragen/@i.id"><button name="submit" type="submit" class="btn btn-default">MFG buchen</button></a>
+
+        }
+        }
+
+    </div>
+    <div class="well center" onload="getLocation()">
+        <div id="result"></div>
+        <div id="map"></div>
+    </div>
+</div>
+
+
+<script type="text/javascript"src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+<script type='text/javascript' src='@routes.Assets.at("js/googleMaps.js")'></script>
+
+
+        @for(i <- mfgDetails) {
+        <script>
+                 StartMapDetailSeiteZiel("@i.zielort");
+                 StartMapDetailSeiteStart("@i.startort");
+                 getLocation();
+         </script>
+        }
+
+}

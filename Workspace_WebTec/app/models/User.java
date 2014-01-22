@@ -8,7 +8,7 @@ import java.util.Date;
  */
 public class User extends Entity {
 
-    public String userId;
+    public String id;
     public String vorname;
     public String nachname;
     public String email;
@@ -22,10 +22,13 @@ public class User extends Entity {
     }
 
 
-    public User(String vorname, String nachname, String userId ) {
+    public User(String vorname, String nachname, String email, String geburtsdatum,String id ) {
         this.vorname = vorname;
         this.nachname = nachname;
-        this.userId = userId;
+        this.email = email;
+        this.geburtsdatum = geburtsdatum;
+        this.id = id;
+
     }
 
 }

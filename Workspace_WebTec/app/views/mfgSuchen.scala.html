@@ -1,4 +1,4 @@
-@(message: String, email : String, user : String)(anzeige: List[ValideMFG])
+@(message: String, email : String, user : String)(mfg:List[ValideMFG])
 @main("MFG Suchen") {
 
 <div class="col-md-3">
@@ -41,6 +41,34 @@
             <hr>
             }
         }
+
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Von</th>
+                <th>Nach</th>
+                <th>Datum</th>
+                <th>Zeit</th>
+            </tr>
+            </thead>
+            <tbody>
+            @if(mfg.isEmpty){
+                <p>bla</p>
+            }else{
+                @for(i <- mfg) {
+                <tr>
+                    <td>@i.startort</td>
+                    <td>@i.zielort</td>
+                    <td>@i.datum</td>
+                    <td>@i.uhrzeit</td>
+                    <td><a href="/mfgDetailAnzeigen/@i.id">Details</a></td>
+
+                </tr>
+                }
+            }
+            </tbody>
+        </table>
+
 
     </div>
 </div>

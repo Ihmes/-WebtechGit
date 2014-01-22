@@ -30,16 +30,16 @@
         @helper.form(routes.memberController.actionAnbieterMaske) {
         <form>
                 <fieldset>
-                    <div class="form-group">
+                    <div class="form-group" name="Formular">
                         <div class="input-group">
                             <span id="start" class="input-group-addon">Start</span>
-                            <input id="startort" name="startort" type="text"  class="form-control" placeholder="Startort">
+                            <input id="startort" name="startort" type="text"  onchange="getLocationStart()" class="form-control" placeholder="Startort">
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="input-group">
                             <span class="input-group-addon">Ziel</span>
-                            <input name="zielort" type="text" class="form-control" placeholder="Zielort">
+                            <input id="zielort" name="zielort" type="text" onchange="getLocationZiel()"  class="form-control" placeholder="Zielort">
                         </div>
                     </div>
                     <div class="form-group">
@@ -67,40 +67,17 @@
                     <button name="submit" type="submit" class="btn btn-default">MFG veröffentlichen</button>
                 </fieldset>
         </form>
-        }
-            <!----->
+                }
         }
     </div>
-    <div class="well center">
-        <div id="map_canvas" style="height:250px;width:100%;"></div>
+    <div class="well center" onload="getLocation()">
+        <div id="result"></div>
+        <div id="map"></div>
     </div>
 </div>
 
 
-<script type="text/javascript"
-        src="https://maps.googleapis.com/maps/api/js?sensor=false">
-</script>
-<script type="text/javascript">
-var geocoder;
-var map;
-function initialize() {
-    geocoder = new google.maps.Geocoder();
-    var latlng = new google.maps.LatLng(-34.397, 150.644);
-    var myOptions = {
-        zoom: 8,
-        center: latlng,
-        mapTypeId: google.maps.MapTypeId.ROADMAP
-    };
-    var map = new google.maps.Map(document.getElementById("map_canvas"),
-            myOptions);
-
-
-}
-google.maps.event.addDomListener(window, "load", initialize);
-
-
-
-
-</script>
+<script type="text/javascript"src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+<script type='text/javascript' src='@routes.Assets.at("js/googleMaps.js")'></script>
 
 }

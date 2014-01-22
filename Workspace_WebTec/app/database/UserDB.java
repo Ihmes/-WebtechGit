@@ -1,6 +1,7 @@
 package database;
 
 import models.User;
+import models.ValideMFG;
 import org.mongojack.DBCursor;
 import play.Logger;
 import com.mongodb.*;
@@ -20,9 +21,11 @@ public class UserDB {
      */
     public static void getDBCollection(){
         db = dbInstance.getDB();
-
     }
 
+    /*
+     * Der Username ist unique in der DB
+     */
     public static String getUsernameByEmail(String email)
     {
         coll = db.getCollection(COLLECTION_USERS);
@@ -36,7 +39,7 @@ public class UserDB {
 
 
         for(DBObject s : cursor) {
-            username = (String) s.get("vorname");
+            username = (String) s.get("username");
         }
 
         if(username.isEmpty()) {
@@ -61,7 +64,7 @@ public class UserDB {
 
 
         for(DBObject s : cursor) {
-            userId = (String) s.get("userId");
+            userId = s.get("_id").toString();
         }
 
         dbInstance.dispose();
@@ -90,6 +93,28 @@ public class UserDB {
 
         dbInstance.dispose();
         return birthday;
+    }
+
+    public static List<User> getUserdataByEmail(String email){
+
+        coll = db.getCollection(COLLECTION_USERS);
+        List<User> Userdata = new ArrayList<User>();
+
+        com.mongodb.DBCursor cursor = coll.find();
+        BasicDBObject query = new BasicDBObject();
+        query.put("email", email);
+
+        cursor = coll.find(query);
+
+
+        for(DBObject s : cursor) {
+            Userdata.add(new User(
+                    (String) s.get("vorname"),(String) s.get("nachname"),
+                    (String) s.get("email"),(String) s.get("geburtsdatum")));
+        }
+
+        dbInstance.dispose();
+        return Userdata;
     }
 
 

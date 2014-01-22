@@ -24,9 +24,15 @@ POST    /mfgSuche                   controllers.memberController.actionSuche()
 GET     /mfgAnbieten                controllers.memberController.showAnbieterMaske()
 POST    /mfgAnbieten                controllers.memberController.actionAnbieterMaske()
 
-
-
+GET     /Profileinstellungen        controllers.ProfileinstellungenController.showProfil()
+POST    /Profileinstellungen        controllers.ProfileinstellungenController.actionProfil()
 
 GET     /logout                     controllers.LogoutController.logout()
 
+GET		/mfgDetailAnzeigen/:id	   controllers.mfgController.showDetailAnzeigen(id: String)
+GET 	/mfgDetailAnfragen/:id	   controllers.mfgController.actionBuchungAnfrage(id: String)
 
+GET		/mfgBestaetigen/:id	            controllers.mfgController.showMfgBesteatigen(id: String)
+
+GET 	/mfgBesteatigen/:mfgID/:userID/abgelehnt  controllers.mfgController.actionMfgAbgelehnt(mfgID: String, userID: String)
+GET 	/mfgBesteatigen/:mfgID/:userID/mitnehmen  controllers.mfgController.actionMfgBesteatigen(mfgID: String, userID: String)

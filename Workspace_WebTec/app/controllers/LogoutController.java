@@ -13,7 +13,7 @@ import play.mvc.Security;
 /**
  * Created by Markus on 19.01.14.
  */
-//@Security.Authenticated(Secured.class)
+@Security.Authenticated(Secured.class)
 public class LogoutController extends Controller {
 
     public static Result logout() {

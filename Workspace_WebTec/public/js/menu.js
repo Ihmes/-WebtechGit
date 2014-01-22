@@ -16,6 +16,31 @@
        $("#myCarousel").carousel();
    });
 
+   $(document).ready(
+
+          $('#editProfil').click(function(){
+              if($('.profil').hasClass( "navActiv" ))
+                  {
+                       $('.profil').css('display', 'none');
+                       $('.profil').removeClass('navActiv');
+
+                       $('.profilform').css('display', 'block');
+                       $('.profilform').addClass('navActiv');
+
+
+                  }else{
+                       $('.profil').css('display', 'block');
+                       $('.profil').addClass('navActiv');
+
+                       $('.profilform').css('display', 'none');
+                       $('.profilform').removeClass('navActiv');
+                  }
+              })
+       );
+
+
+
+
    $(function(){
         $('.form_date').datetimepicker({
             format: 'dd-MM-yyyy',

@@ -19,8 +19,10 @@
 
 .row .col-md-8 .form-group {min-height: 35px!important;}
 .registrierenInfo{padding:10px;font-size: 95%;}
-
-
+.profil p{text-align: left;}
+.profil span {float:right;}
+.profilform{display:none;}
+#map {height:250px;width:100%;}
 <!---- Datepicker ---->
 
 /*!

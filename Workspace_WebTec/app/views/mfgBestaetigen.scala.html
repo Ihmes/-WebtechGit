@@ -1,0 +1,64 @@
+@(message: String, email : String, user : String)(mfgDetails:List[ValideMFG])(userdata:List[User])
+@main("MFG Details") {
+
+<div class="col-md-3">
+    <ul class="nav nav-pills nav-stacked">
+
+        <li><a href="/memberIndex">Meine MFG</a></li>
+        <li class="active"><a href="/mfgSuche">MFG Suchen</a></li>
+        <li><a href="/mfgAnbieten">MFG Anbieten</a></li>
+        <li><a href="/logout">Logout</a></li>
+    </ul>
+    <hr>
+    <span class="label label-default">Konto: @email / @user</span>
+    <hr>
+</div>
+<div class="col-md-9">
+
+    <div class="well center">
+
+        @if(message){
+        <div class="alert alert-warning">
+            @message
+        </div>
+        }
+
+
+            @for(l <- userdata) {
+                @for(i <- mfgDetails) {
+                <div class="profil">
+                    <h4>Mitfahrer</h4>
+                    <p><span class="label label-primary">Vorname </span> @l.vorname</p><hr>
+                    <p><span class="label label-primary">Nachname </span> @l.nachname</p><hr>
+                    <p><span class="label label-primary">Email </span> @l.email</p><hr>
+                    <p><span class="label label-primary">Geburtsdatum </span> @l.geburtsdatum</p><hr>
+
+                </div>
+                <a href="/mfgBesteatigen/@i.id/@l.id/abgelehnt"><button name="submit" type="submit" class="btn btn-warning">Mitfahrer ablehnen </button></a>
+                <a href="/mfgBesteatigen/@i.id/@l.id/mitnehmen"><button name="submit" type="submit" class="btn btn-success">Mitfahrer mitnehmen </button></a>
+
+                <a href="/mfgDetailAnzeigen/@i.id"><button name="submit" type="submit" class="btn btn-default">MFG Details</button></a>
+                }
+            }
+
+    </div>
+    <div class="well center" onload="getLocation()">
+        <div id="result"></div>
+        <div id="map"></div>
+    </div>
+</div>
+
+
+<script type="text/javascript"src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+<script type='text/javascript' src='@routes.Assets.at("js/googleMaps.js")'></script>
+
+
+@for(i <- mfgDetails) {
+<script>
+                 StartMapDetailSeiteZiel("@i.zielort");
+                 StartMapDetailSeiteStart("@i.startort");
+                 getLocation();
+         </script>
+}
+
+}

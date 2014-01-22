@@ -1,4 +1,4 @@
-@(message: String, email : String, user : String)
+@(message: String, email : String, user : String, userDataTrue: String)(mfgAngeboten:List[ValideMFG])(mfgAnfragen:List[ValideMFG])(mfgBestaetigung:List[ValideMFG])(mfgAbgelehnt:List[ValideMFG])
 @main("Memberbereich") {
 
 <div class="col-md-3">
@@ -17,11 +17,76 @@
 
     <div class="well center">
 
-        <div class="alert alert-success">
+        @if(message){
+        <div class="alert alert-info">
             @message
-
         </div>
+        }
 
+        @if(userDataTrue){
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Von</th>
+                <th>Nach</th>
+                <th>Datum</th>
+                <th>Zeit</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            @for(l <- mfgAngeboten) {
+            <tr>
+                <td>@l.startort</td>
+                <td>@l.zielort</td>
+                <td>@l.datum</td>
+                <td><span class="label label-danger">zu bestätigen</span></td>
+                <td><a href="/mfgBestaetigen/@l.id">Jetzt bestätigen</a></td>
+            </tr>
+            }
+
+            @for(l <- mfgAnfragen) {
+            <tr>
+                <td>@l.startort</td>
+                <td>@l.zielort</td>
+                <td>@l.datum</td>
+                <td><span class="label label-warning">angefragt</span></td>
+                <td><a href="/mfgDetailAnzeigen/@l.id">Details</a></td>
+
+            </tr>
+            }
+
+
+            @for(l <- mfgBestaetigung) {
+            <tr>
+                <td>@l.startort</td>
+                <td>@l.zielort</td>
+                <td>@l.datum</td>
+                <td><span class="label label-success">bestätigt</span></td>
+                <td><a href="/mfgDetailAnzeigen/@l.id">Details</a></td>
+
+            </tr>
+            }
+
+            @for(l <- mfgAbgelehnt) {
+            <tr>
+                <td>@l.startort</td>
+                <td>@l.zielort</td>
+                <td>@l.datum</td>
+                <td><span class="label label-default">abgelehnt</span></td>
+                <td><a href="/mfgDetailAnzeigen/@l.id">Details</a></td>
+
+            </tr>
+            }
+
+            </tbody>
+        </table>
+
+
+        <ul class="pager">
+            <li><a href="/Profileinstellungen">Kontodaten bearbeiten <span class="glyphicon glyphicon-cog"></span></a></li>
+        </ul>
+        }
     </div>
 </div>
 }
