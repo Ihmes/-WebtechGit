@@ -18,7 +18,7 @@ public class mfgController extends Controller {
         mfgDBHandler detailliste = new mfgDBHandler();
         detailliste.getDBCollection();
 
-        return ok(mfgDetailAnzeigen.render("ID " + id, session("email"), null , detailliste.getDetailList(id)));
+        return ok(mfgDetailAnzeigen.render(null, session("email"), null , detailliste.getDetailList(id)));
 
     }
     public static Result actionBuchungAnfrage(String id){
@@ -41,7 +41,7 @@ public class mfgController extends Controller {
         mfgDBHandler detailliste = new mfgDBHandler();
         detailliste.getDBCollection();
 
-        return ok(mfgBestaetigen.render("ID " + id, session("email"), null , detailliste.getDetailList(id), detailliste.getMFGMitfahrer(id)));
+        return ok(mfgBestaetigen.render(null, session("email"), null , detailliste.getDetailList(id), detailliste.getMFGMitfahrer(id)));
 
     }
 
@@ -50,7 +50,7 @@ public class mfgController extends Controller {
         mfgDBHandler mfgStatus = new mfgDBHandler();
         mfgStatus.getDBCollection();
         return ok(views.html.memberIndex.render(mfgStatus.setMFGStatus( mfgID,  userID, "bestaetigt")
-        + userID, email , null, null, null,null,null,null));
+                , email , null, null, null,null,null,null));
 
     }
     public static Result actionMfgAbgelehnt(String mfgID, String userID){

@@ -57,7 +57,7 @@ public class accessController extends Controller{
                 session().clear();
                 session("email", user.email);
                 session("connected", "true");
-                return ok(memberIndex.render("Du hast Dich erfolgreich angemeldet", session("email"),null, null ,null, null,null,null));
+                return ok(memberIndex.render("Du hast Dich erfolgreich mit dem Konto " + session("email") +" angemeldet", session("email"),null, null ,null, null,null,null));
             }else{
                 return ok(views.html.login.render("Password oder Email-Adresse sind falsch"));
             }

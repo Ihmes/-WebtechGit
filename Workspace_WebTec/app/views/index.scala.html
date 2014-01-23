@@ -33,9 +33,14 @@
         <h1>Willkommen auf MFG </h1>
         <hr>
         <p>
-        @message
+        @if(message){
+        <div class="alert alert-success">
+            @message
+        </div>
+        }
+
         </p>
-        <a href="/registrierung"><button type="button" class="btn btn-primary btn-lg">JETZT ANMELDEN UND MITMACHEN</button>
+        <a href="/registrierung"><button type="button" class="btn btn-primary btn-lg">Jetzt registrieren!</button>
     </div>
 
 }

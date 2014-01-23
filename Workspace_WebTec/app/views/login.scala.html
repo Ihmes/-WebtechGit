@@ -44,7 +44,11 @@
         <div class="col-md-4">
 
             <div class="bs-callout bs-callout-warning">
-                @content
+                @if(content){
+                <div class="alert alert-danger">
+                    @content
+                </div>
+                }
                 <p>
                     <span class="glyphicon glyphicon-info-sign"></span> Neu hier? Jetzt kostenlos registrieren!
                 </p>

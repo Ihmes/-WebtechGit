@@ -5,12 +5,12 @@ package models;
  */
 public class ValideMFG extends Entity {
 
-    public ValideMFG(String id, String startort, String zielort,  String datum,
+    public ValideMFG(String id, String startort, String zielort, int mitfahrer, String datum,
                           String uhrzeit, String fahrer  ) {
         this.id = id;
         this.startort = startort;
         this.zielort = zielort;
-        //this.mitfahrer = mitfahrer;
+        this.mitfahrer = mitfahrer;
         this.datum = datum;
         this.uhrzeit = uhrzeit;
         this.fahrer = fahrer;

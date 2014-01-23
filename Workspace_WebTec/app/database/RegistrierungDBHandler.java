@@ -68,18 +68,15 @@ public class RegistrierungDBHandler {
 
         if (!findEmail.isEmpty()) {
             dbInstance.dispose();
-            return "Der Email wurde schon verwendet. Bitte verwende einen andere";
+            return "Deine Email wurde schon verwendet. Bitte verwende einen andere";
         }
 
         //Speichern der Daten
 
         BasicDBObject doc = new BasicDBObject("username", username)
                 .append("email", email).append("password", password)
-                        //.append("titel", titel).append("fahrertyp", fahrertyp)
                 .append("geburtsdatum", geburtsdatum)
                 .append("vorname", vorname).append("nachname", nachname);
-        //.append("tel", telefon)
-        //.append("registrierungsdatum", registrierungsdatum);
         coll.insert(doc);
         dbInstance.dispose();
 

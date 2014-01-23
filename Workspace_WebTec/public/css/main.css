@@ -3,9 +3,17 @@
 #footerSection .span3 h5{font-weight: bold;}
 #footerSection .span3 ul{padding:0px;}
 #footerSection .span3 li{list-style-type: none;}
-#footerSection .span3 a{color: #B9B5B5;}
-#footerSection {min-width: 190px; background: #202020;color: white;padding: 28px 0 44px;bottom: 0px; margin-top: 20px;border-top: 1px solid #444;}
-#logoMFG{padding-left: 20px; color: #B9B5B5;}
+#footerSection .span3 a{color: #70767E;}
+#footerSection {
+min-width: 190px;
+height: auto;
+color: #70767E;
+padding: 28px 0 44px;
+bottom: 0px;
+margin-top: 20px;
+border-top: 1px solid #BBC4D1;
+}
+#logoMFG{padding-right: 30px;color: #70767E;}
 #navRWD {display:none;}
 .loginPanel{float: right;margin: 16.5px 10px;}
 

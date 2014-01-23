@@ -126,9 +126,10 @@ public class mfgDBHandler {
                 if(ValidTimeandDate <= 0){
                     ergDBquery.add(new ValideMFG( s.get("_id").toString(),
                             (String) s.get("startort"),(String) s.get("zielort"),
+                            (int) s.get("mitfahrer"),
                             (String) s.get("datum"),
                             (String) s.get("uhrzeit"),(String) s.get("fahrer")));
-                    // Integer.parseInt((String) s.get("mitfahrer")),
+
                 }
             }
 
@@ -283,12 +284,12 @@ public class mfgDBHandler {
 
         BasicDBObject queryMFG = new BasicDBObject("userID", UserID).append("mfgStatus", status);
         cursor = coll.find(queryMFG);
-//******
+
         DateFormat date = new SimpleDateFormat("dd-MM-yyyy HH:mm");
         Date currentDate = Calendar.getInstance().getTime();
         Date ParseDateformDB = null;
         long ValidTimeandDate =0;
-//******
+
         for(DBObject d : cursor) {
             mfgID = (String) d.get("mfgID");
 
@@ -298,9 +299,6 @@ public class mfgDBHandler {
 
                 BasicDBObject query = new BasicDBObject("_id", new ObjectId(mfgID));
                 cursorMFG = coll.find(query);
-
-            //*****
-
 
                 for (DBObject s : cursorMFG) {
                     String dateDB = (String) s.get("datum") + " "
@@ -317,11 +315,6 @@ public class mfgDBHandler {
                 }
                 if(ValidTimeandDate <= 0){
 
-            //*****
-
-
-
-
                     for (DBObject i : cursorMFG) {
                         ergDBquery.add(new ValideMFG(i.get("_id").toString(),
                                 (String) i.get("startort"),(String) i.get("zielort"),
@@ -329,9 +322,8 @@ public class mfgDBHandler {
                                 (String) i.get("uhrzeit")));
                     }
 
-            //******
+
                 }
-            //******
 
         }
 
@@ -449,19 +441,43 @@ public class mfgDBHandler {
 
         if(status.contentEquals("bestaetigt"))
         {
-            DB db = dbInstance.getDB();
-            coll = db.getCollection(COLLECTION_MFGBS);
-            com.mongodb.DBCursor cursor = coll.find();
+                // Status auf bestaetigt setzten
+                DB db = dbInstance.getDB();
+                coll = db.getCollection(COLLECTION_MFGBS);
+                com.mongodb.DBCursor cursor = coll.find();
 
-            BasicDBObject queryMFG = new BasicDBObject("mfgID", mfgID).append("userID",userID);
-            cursor = coll.find(queryMFG);
+                BasicDBObject queryMFG = new BasicDBObject("mfgID", mfgID).append("userID",userID);
+                cursor = coll.find(queryMFG);
 
-            BasicDBObject doc = new BasicDBObject();
-            doc.put("mfgStatus", "bestaetigt");
-            BasicDBObject newStatusAb = new BasicDBObject();
-            newStatusAb.put("$set", doc);
-            coll.update(queryMFG, newStatusAb);
+                BasicDBObject doc = new BasicDBObject();
+                doc.put("mfgStatus", "bestaetigt");
+                BasicDBObject newStatusAb = new BasicDBObject();
+                newStatusAb.put("$set", doc);
+                coll.update(queryMFG, newStatusAb);
 
+                //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+                // Anzahl der Mitfahrer -1
+                //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+                /*
+                DB dbMFG = dbInstance.getDB();
+                coll = dbMFG.getCollection(COLLECTION_MFG);
+                com.mongodb.DBCursor cursorMFG = coll.find();
+
+                BasicDBObject query = new BasicDBObject("id", new ObjectId(mfgID));
+                cursorMFG = coll.find(query);
+
+                int mitfahrer = 0;
+                for(DBObject s : cursor) {
+                    mitfahrer = (int) s.get("mitfahrer");
+                }
+
+                mitfahrer --;
+                BasicDBObject iDoc = new BasicDBObject();
+                iDoc.put("mitfahrer", mitfahrer);
+                BasicDBObject newMitfahrerAnz = new BasicDBObject();
+                newMitfahrerAnz.put("$set", iDoc);
+                coll.update(queryMFG, newMitfahrerAnz);
+                */
             return "Du hast die Mitfahrt bestätigt";
         }
 

@@ -117,5 +117,47 @@ public class UserDB {
         return Userdata;
     }
 
+    public static List<User> getUserProfileDataByEmail(String email){
 
+        coll = db.getCollection(COLLECTION_USERS);
+        List<User> Userdata = new ArrayList<User>();
+
+        com.mongodb.DBCursor cursor = coll.find();
+        BasicDBObject query = new BasicDBObject();
+        query.put("email", email);
+
+        cursor = coll.find(query);
+
+
+        for(DBObject s : cursor) {
+            Userdata.add(new User(
+                    (String) s.get("vorname"),(String) s.get("nachname"),
+                    (String) s.get("email"),(String) s.get("geburtsdatum"),(String) s.get("username"),(String) s.get("password")));
+        }
+        dbInstance.dispose();
+        return Userdata;
+    }
+
+    public static String setProfilUpdate(String vorname, String nachname  ,String geburtsdatum ,String password, String username){
+
+            coll = db.getCollection(COLLECTION_USERS);
+            com.mongodb.DBCursor cursor = coll.find();
+
+            // Username ist unique
+            BasicDBObject query = new BasicDBObject("username", username);
+            cursor = coll.find(query);
+
+                BasicDBObject doc = new BasicDBObject();
+                doc.put("vorname", vorname);
+                doc.put("nachname", nachname);
+                doc.put("geburtsdatum", geburtsdatum);
+                doc.put("password", password);
+
+            BasicDBObject newStatusAb = new BasicDBObject();
+            newStatusAb.put("$set", doc);
+            coll.update(query, newStatusAb);
+
+            return "Deine Kontodaten wurden erfolgreich geändert";
+
+    }
 }

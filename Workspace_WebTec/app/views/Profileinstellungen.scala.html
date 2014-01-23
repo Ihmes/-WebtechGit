@@ -30,56 +30,57 @@
         <p><span class="label label-primary">Vorname </span> @i.vorname</p><hr>
         <p><span class="label label-primary">Nachname </span> @i.nachname</p><hr>
         <p><span class="label label-primary">Email </span> @i.email</p><hr>
-        <p><span class="label label-primary">Passwort </span> *****</p><hr>
         <p><span class="label label-primary">Geburtsdatum </span> @i.geburtsdatum</p><hr>
+        <p><span class="label label-primary">Username </span> @i.username</p><hr>
+        <p><span class="label label-primary">Password </span> @i.password</p><hr>
         </div>
-
+        @helper.form(routes.ProfileinstellungenController.actionProfil) {
         <div class="profilform">
             <fieldset>
             <form>
             <div class="form-group">
                 <div class="input-group">
                     <span class="input-group-addon">Vorname</span>
-                    <input name="vorname" type="text" class="form-control" placeholder="Vorname">
+                    <input name="vorname" value="@i.vorname" type="text" class="form-control" placeholder="Vorname">
                 </div>
             </div>
             <div class="form-group">
                 <div class="input-group">
-                    <span class="input-group-addon">Name</span>
-                    <input name="nachname" type="text" class="form-control" placeholder="Name">
+                    <span class="input-group-addon">Nachname</span>
+                    <input name="nachname"  value="@i.nachname"  type="text" class="form-control" placeholder="Name">
                 </div>
             </div>
             <div class="form-group">
                 <div class="input-group">
                     <span class="input-group-addon">E-Mail</span>
-                    <input name="email" type="email" type="text" class="form-control" placeholder="E-Mail">
+                    <input name="email" value="@i.email"  type="email" type="text" class="form-control" placeholder="E-Mail" id="disabledInput" disabled>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group date form_date" data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input2" data-link-format="dd-MM-yyyy">
+                    <input class="form-control" name="geburtsdatum" size="16" type="text" value="@i.geburtsdatum" readonly placeholder="Geburtsdatum">
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon">Username</span>
+                    <input value="@i.username"  type="text"  class="form-control" id="disabledInput" disabled>
                 </div>
             </div>
             <div class="form-group">
                 <div class="input-group">
                     <span class="input-group-addon">Passwort</span>
-                    <input name="password" type="password" type="text" class="form-control" placeholder="Passwort">
+                    <input name="password" value="@i.password"  type="password" type="text" class="form-control" placeholder="Passwort">
                 </div>
             </div>
-            <div class="form-group">
-                <div class="input-group">
-                    <span class="input-group-addon">Passwort wiederholen</span>
-                    <input name="repassword" type="password" type="text" class="form-control" placeholder="Passwort wiederholen">
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="input-group date form_date" data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input2" data-link-format="dd-MM-yyyy">
-                    <input class="form-control" name="geburtsdatum" size="16" type="text" value="" readonly placeholder="Geburtsdatum">
-                    <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
-                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
-                </div>
-                <input type="hidden" id="dtp_input2" value="" /><br/>
-            </div>
-
+            <input type="hidden" name="username" value="@i.username">
 
             <button name="submit" type="submit" class="btn btn-default">Absenden</button>
-            </fieldset>
             </form>
+            </fieldset>
+            }
 
         </div>
         }

@@ -40,34 +40,30 @@
             </div>
         </nav>
 
-        <div class="container">
+        <div class="container rwdContainer">
             @content
         </div>
 
-    </div>
-
-
-
-    <div id="footerSection">
-        <div class="container">
-            <div class="pull-left">
-                <div class="span3">
-                    <h5>Rechtliches</h5>
-                    <ul>
-                        <li><a href="#">Impressum</a></li>
-                        <li><a href="#">Kontakt</a></li>
-                        <li><a href="#">AGB's</a></li>
-                    </ul>
+        <div id="footerSection">
+            <div class="container rwdContainer">
+                <div class="pull-left">
+                    <div class="span3">
+                        <h5>Rechtliches</h5>
+                        <ul>
+                            <li><a href="#">Impressum</a></li>
+                            <li><a href="#">Kontakt</a></li>
+                            <li><a href="#">AGB's</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div id="logoMFG" class="span3 pull-right">
+                    Copyright © 2001-2014
+                    <img src='@routes.Assets.at("images/Logo_grau.png")' />
                 </div>
             </div>
-            <div id="logoMFG" class="span3 pull-right">
-                Copyright © 2001-2014
-                <img src='@routes.Assets.at("images/Logo_grau.png")' />
-            </div>
+    
         </div>
-
     </div>
-
 
     <script type='text/javascript' src='@routes.Assets.at("js/bootstrap.min.js")'></script>
     <script type='text/javascript' src='@routes.Assets.at("js/menu.js")'></script>

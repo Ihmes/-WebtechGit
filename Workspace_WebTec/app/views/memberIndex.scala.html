@@ -22,15 +22,14 @@
             @message
         </div>
         }
-
         @if(userDataTrue){
         <table class="table table-striped">
             <thead>
             <tr>
                 <th>Von</th>
-                <th>Nach</th>
-                <th>Datum</th>
-                <th>Zeit</th>
+                <th class="rwdTabel">Nach</th>
+                <th class="rwdTabel">Datum</th>
+                <th>Status</th>
             </tr>
             </thead>
             <tbody>
@@ -38,8 +37,8 @@
             @for(l <- mfgAngeboten) {
             <tr>
                 <td>@l.startort</td>
-                <td>@l.zielort</td>
-                <td>@l.datum</td>
+                <td class="rwdTabel">@l.zielort</td>
+                <td class="rwdTabel">@l.datum</td>
                 <td><span class="label label-danger">zu bestätigen</span></td>
                 <td><a href="/mfgBestaetigen/@l.id">Jetzt bestätigen</a></td>
             </tr>
@@ -48,8 +47,8 @@
             @for(l <- mfgAnfragen) {
             <tr>
                 <td>@l.startort</td>
-                <td>@l.zielort</td>
-                <td>@l.datum</td>
+                <td class="rwdTabel">@l.zielort</td>
+                <td class="rwdTabel">@l.datum</td>
                 <td><span class="label label-warning">angefragt</span></td>
                 <td><a href="/mfgDetailAnzeigen/@l.id">Details</a></td>
 
@@ -60,8 +59,8 @@
             @for(l <- mfgBestaetigung) {
             <tr>
                 <td>@l.startort</td>
-                <td>@l.zielort</td>
-                <td>@l.datum</td>
+                <td class="rwdTabel">@l.zielort</td>
+                <td class="rwdTabel">@l.datum</td>
                 <td><span class="label label-success">bestätigt</span></td>
                 <td><a href="/mfgDetailAnzeigen/@l.id">Details</a></td>
 
@@ -71,8 +70,8 @@
             @for(l <- mfgAbgelehnt) {
             <tr>
                 <td>@l.startort</td>
-                <td>@l.zielort</td>
-                <td>@l.datum</td>
+                <td class="rwdTabel">@l.zielort</td>
+                <td class="rwdTabel">@l.datum</td>
                 <td><span class="label label-default">abgelehnt</span></td>
                 <td><a href="/mfgDetailAnzeigen/@l.id">Details</a></td>
 
