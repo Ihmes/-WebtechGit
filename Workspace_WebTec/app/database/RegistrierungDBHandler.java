@@ -80,6 +80,6 @@ public class RegistrierungDBHandler {
         coll.insert(doc);
         dbInstance.dispose();
 
-        return "";
+        return "true";
     }
 }

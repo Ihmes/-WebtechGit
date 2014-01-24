@@ -129,15 +129,21 @@ public class memberController extends Controller {
             StringBuilder sb = new StringBuilder();
             sb.append(years);
             age = (int) Math.floor(Double.parseDouble(sb.toString()));
+
             }catch  (Exception e) {
                 Logger.info("Datum konnte nicht geparse werden" + e);
             }
         if(age < 18)
         {
-            return ok(views.html.mfgAnbieten.render("Du bist keine 18 Jahre, daher kannst du keine MFG anbieten", session("email"), user));
+            return ok(views.html.mfgAnbieten.render("Du bist keine 18 Jahre, daher kannst du keine MFG anbieten", session("email"), null, null ));
         }else{
-            return ok(views.html.mfgAnbieten.render( null, session("email"), user));
-        }
+            userDB.getDBCollection();
+            String UserID = userDB.getUserIdByEmail(email);
+
+            mfgDBHandler mfgliste = new mfgDBHandler();
+            mfgliste.getDBCollection();
+            return ok(views.html.mfgAnbieten.render( null, session("email"), user, mfgliste.getAllMFGs(UserID)));
+      }
 
     }
     @play.mvc.Security.Authenticated(Secured.class)
@@ -147,11 +153,15 @@ public class memberController extends Controller {
         mfgForm = mfgForm.bindFromRequest();
 
         if (mfgForm.hasErrors()) {
-            return badRequest(views.html.mfgAnbieten.render("Da ist etwas schiefgelaufen : " + mfgForm.errors(), null, null));
+            return badRequest(views.html.mfgAnbieten.render("Da ist etwas schiefgelaufen : " + mfgForm.errors(), null, null,null));
         } else {
 
             String email = session("email");
             UserDB userDB = new UserDB();
+            String StatusMessage ="";
+            long ValidTimeandDate = 0;
+
+
             userDB.getDBCollection();
             String user = userDB.getUsernameByEmail(email);
 
@@ -161,7 +171,30 @@ public class memberController extends Controller {
             mfgDBHandler mfgInstance = new mfgDBHandler();
             mfgInstance.getDBCollection();
             ValideMFG newMFG = mfgForm.get();
-            String StatusMessage = mfgInstance.getMFGSave(newMFG.startort ,newMFG.zielort, newMFG.mitfahrer, newMFG.datum, newMFG.uhrzeit, false, user, userID);
+
+            /**
+             *  Das Datum der MFG darf nicht in der Vergangenheit liegen
+             *
+             */
+            String mfgDateTime = newMFG.datum +" " + newMFG.uhrzeit;
+
+            DateFormat date = new SimpleDateFormat("dd-MM-yyyy HH:mm");
+            Date currentDate = Calendar.getInstance().getTime();
+            Date ParseDateformDB = null;
+
+            try{
+                ParseDateformDB = date.parse(mfgDateTime);
+                ValidTimeandDate = currentDate.getTime()
+                        - ParseDateformDB.getTime();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            if(ValidTimeandDate <= 0){
+                StatusMessage = mfgInstance.getMFGSave(newMFG.startort ,newMFG.zielort, newMFG.mitfahrer, newMFG.datum, newMFG.uhrzeit, false, user, userID);
+            }else{
+                StatusMessage ="Das Datum deiner MFG liegt in der Vergangenheit. Versuch es nochmal!";
+            }
 
             return ok(views.html.memberIndex.render( StatusMessage, session("email"), user,null, null, null, null, null));
         }

@@ -77,7 +77,7 @@ public class accessController extends Controller{
         regForm = regForm.bindFromRequest();
 
         if (regForm.hasErrors()) {
-            return badRequest(registrierung.render("Da ist etwas schiefgelaufen : " + regForm.errors()));
+            return badRequest(registrierung.render("Da ist etwas schiefgelaufen: Es müssen alle Felder ausgefühllt werden" ));
         } else {
             ValidUserRegistrierung newUserData = regForm.get();
 
@@ -104,7 +104,12 @@ public class accessController extends Controller{
                 session().clear();
                 session("email", email);
                 session("connected", "true");
-                return ok(views.html.memberIndex.render("Hallo " +  user + " " +StatusMessage, session("email"), user,null, null,null,null,null));
+                if(StatusMessage.contentEquals("true")){
+                    return ok(views.html.memberIndex.render("Hallo " +  user +"! Du hast erfolgreich ein Konto erstellt", session("email"), user,null, null,null,null,null));
+                }else{
+                    return ok(views.html.registrierung.render(StatusMessage));
+                }
+
             }
         }
 

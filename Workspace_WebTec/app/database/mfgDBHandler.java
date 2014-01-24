@@ -232,7 +232,6 @@ public class mfgDBHandler {
         String findMFG = "";
         String fahrerID ="";
 
-
         coll = db.getCollection(COLLECTION_MFG);
         com.mongodb.DBCursor cursorMFG = coll.find();
 
@@ -242,7 +241,6 @@ public class mfgDBHandler {
         for(DBObject s : cursorMFG) {
             fahrerID = (String) s.get("fahrerID");
         }
-
 
         coll = db.getCollection(COLLECTION_MFGBS);
         BasicDBObject query = (BasicDBObject) new BasicDBObject("userID",
@@ -263,6 +261,10 @@ public class mfgDBHandler {
             return "Du hast für diese Fahrt schon eine Buchungsanfrage gesendet";
         }
 
+        //idUserMitfahrer == UserID
+        if(userID.contentEquals(fahrerID)){
+            return "Du kannst deine eigene Fahrt nicht buchen!";
+        }
 
         BasicDBObject doc = new BasicDBObject("userID", userID).append("mfgStatus", mfgStatus)
                 .append("mfgID", mfgID).append("fahrerID",fahrerID);
@@ -364,8 +366,12 @@ public class mfgDBHandler {
         dbInstance.dispose();
         return ergDBquery;
 
-     //   Alle eingestellten fahrten
-     /*
+    }
+
+    public static List<ValideMFG> getAllMFGs(String UserID){
+
+    //   Alle eingestellten fahrten des Useres ausgeben ohne Status
+
         List<ValideMFG> ergDBquery = new ArrayList<ValideMFG>();
 
         com.mongodb.DBCursor cursor = coll.find();
@@ -383,7 +389,6 @@ public class mfgDBHandler {
         dbInstance.dispose();
         return ergDBquery;
 
-    */
     }
 
     public static List<User> getMFGMitfahrer(String mfgID){
@@ -441,6 +446,32 @@ public class mfgDBHandler {
 
         if(status.contentEquals("bestaetigt"))
         {
+
+            //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+            // Anzahl der Mitfahrer -1 wenn die Buchung bestätigz wird
+            //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+            DB dbMFG = dbInstance.getDB();
+            coll = dbMFG.getCollection(COLLECTION_MFG);
+            com.mongodb.DBCursor cursorMFG = coll.find();
+
+            BasicDBObject query = new BasicDBObject("_id", new ObjectId(mfgID));
+            cursorMFG = coll.find(query);
+
+            int mitfahrerAnz =0;
+            for(DBObject s : cursorMFG) {
+                mitfahrerAnz = (int) s.get("mitfahrer");
+            }
+
+            if(mitfahrerAnz >= 1){
+                mitfahrerAnz --;
+                BasicDBObject idoc = new BasicDBObject();
+                idoc.put("mitfahrer", mitfahrerAnz);
+                BasicDBObject newFahrerAnz = new BasicDBObject();
+                newFahrerAnz.put("$set", idoc);
+                coll.update(query, newFahrerAnz);
+
+
                 // Status auf bestaetigt setzten
                 DB db = dbInstance.getDB();
                 coll = db.getCollection(COLLECTION_MFGBS);
@@ -455,30 +486,11 @@ public class mfgDBHandler {
                 newStatusAb.put("$set", doc);
                 coll.update(queryMFG, newStatusAb);
 
-                //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-                // Anzahl der Mitfahrer -1
-                //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-                /*
-                DB dbMFG = dbInstance.getDB();
-                coll = dbMFG.getCollection(COLLECTION_MFG);
-                com.mongodb.DBCursor cursorMFG = coll.find();
+                return "Du hast die Mitfahrt bestätigt";
+            }else{
+                return "Es sind keine Plätze mehr frei! ";
+            }
 
-                BasicDBObject query = new BasicDBObject("id", new ObjectId(mfgID));
-                cursorMFG = coll.find(query);
-
-                int mitfahrer = 0;
-                for(DBObject s : cursor) {
-                    mitfahrer = (int) s.get("mitfahrer");
-                }
-
-                mitfahrer --;
-                BasicDBObject iDoc = new BasicDBObject();
-                iDoc.put("mitfahrer", mitfahrer);
-                BasicDBObject newMitfahrerAnz = new BasicDBObject();
-                newMitfahrerAnz.put("$set", iDoc);
-                coll.update(queryMFG, newMitfahrerAnz);
-                */
-            return "Du hast die Mitfahrt bestätigt";
         }
 
         return "Ein Fehler ist aufgetreten!! Versuch es nochmal";

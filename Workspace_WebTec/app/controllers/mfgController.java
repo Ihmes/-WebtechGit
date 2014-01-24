@@ -6,7 +6,7 @@ import play.mvc.Controller;
 import play.mvc.Result;
 import views.html.mfgDetailAnzeigen;
 import views.html.mfgBestaetigen;
-
+import views.html.mfgDetailindex;
 /**
  * Created by Markus on 21.01.14.
  */
@@ -21,6 +21,16 @@ public class mfgController extends Controller {
         return ok(mfgDetailAnzeigen.render(null, session("email"), null , detailliste.getDetailList(id)));
 
     }
+
+    public static Result showDetailIndex(String id){
+
+        mfgDBHandler detailliste = new mfgDBHandler();
+        detailliste.getDBCollection();
+
+        return ok(mfgDetailindex.render(null, session("email"), null , detailliste.getDetailList(id)));
+
+    }
+
     public static Result actionBuchungAnfrage(String id){
 
         String email = session("email");

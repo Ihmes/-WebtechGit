@@ -1,0 +1,90 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuite hostname="Ihmes" name="IntegrationTest" tests="1" errors="0" failures="1" time="0.022">
+        <properties>
+      <property name="jline.esc.timeout" value="0"/><property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/><property name="sun.boot.library.path" value="C:\Program Files\Java\jre7\bin"/><property name="java.vm.version" value="24.45-b08"/><property name="java.vm.vendor" value="Oracle Corporation"/><property name="java.vendor.url" value="http://java.oracle.com/"/><property name="path.separator" value=";"/><property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/><property name="file.encoding.pkg" value="sun.io"/><property name="user.country" value="DE"/><property name="user.script" value=""/><property name="sun.java.launcher" value="SUN_STANDARD"/><property name="sun.os.patch.level" value=""/><property name="java.vm.specification.name" value="Java Virtual Machine Specification"/><property name="user.dir" value="D:\Workspace_WebTec"/><property name="java.runtime.version" value="1.7.0_45-b18"/><property name="sbt.boot.properties" value="file:/C:/Users/Markus/AppData/Local/Temp/sbtrc5002708057998960734properties"/><property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/><property name="java.endorsed.dirs" value="C:\Program Files\Java\jre7\lib\endorsed"/><property name="os.arch" value="amd64"/><property name="java.io.tmpdir" value="C:\Users\Markus\AppData\Local\Temp\"/><property name="line.separator" value="
+"/><property name="java.vm.specification.vendor" value="Oracle Corporation"/><property name="user.variant" value=""/><property name="os.name" value="Windows 8"/><property name="sun.jnu.encoding" value="Cp1252"/><property name="java.library.path" value="C:\WINDOWS\system32;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Intel\OpenCL SDK\2.0\bin\x86;C:\Program Files (x86)\Intel\OpenCL SDK\2.0\bin\x64;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Diskeeper Corporation\ExpressCache\;C:\Program Files\Intel\WiFi\bin\;D:\Programme (x64)\ImageConverter Plus;D:\Programme (x64)\ImageConverter Plus\Microsoft.VC80.CRT;D:\Programme (x64)\ImageConverter Plus\Microsoft.VC80.MFC;C:\Program Files\Java\jdk1.7.0_45\bin;%PLAY_HOME%;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;."/><property name="java.specification.name" value="Java Platform API Specification"/><property name="java.class.version" value="51.0"/><property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/><property name="os.version" value="6.2"/><property name="user.home" value="C:\Users\Markus"/><property name="user.timezone" value="Europe/Berlin"/><property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob"/><property name="file.encoding" value="Cp1252"/><property name="java.specification.version" value="1.7"/><property name="java.class.path" value="C:\Users\Markus\hello-play\activator-launch-1.0.10.jar"/><property name="user.name" value="Markus"/><property name="jline.shutdownhook" value="false"/><property name="sbtrc.control-port" value="51430"/><property name="java.vm.specification.version" value="1.7"/><property name="sun.java.command" value="C:\Users\Markus\hello-play\activator-launch-1.0.10.jar apply -cp &quot;&quot;&quot;C:/Users/Markus/.sbt/boot/scala-2.10.2/com.typesafe.sbtrc/sbt-rc-probe-0-13/1.0-2c8e80f5d3e1dba2418210b43b0e372cf331a8cd/sbt-rc-probe-0-13-1.0-2c8e80f5d3e1dba2418210b43b0e372cf331a8cd.jar;C:/Users/Markus/.sbt/boot/scala-2.10.2/com.typesafe.sbtrc/sbt-rc-probe-0-13/1.0-2c8e80f5d3e1dba2418210b43b0e372cf331a8cd/sbt-rc-props-1.0-2c8e80f5d3e1dba2418210b43b0e372cf331a8cd.jar&quot;&quot;&quot; com.typesafe.sbtrc.SetupSbtChild listen"/><property name="java.home" value="C:\Program Files\Java\jre7"/><property name="sun.arch.data.model" value="64"/><property name="user.language" value="de"/><property name="java.specification.vendor" value="Oracle Corporation"/><property name="awt.toolkit" value="sun.awt.windows.WToolkit"/><property name="java.vm.info" value="mixed mode"/><property name="java.version" value="1.7.0_45"/><property name="java.ext.dirs" value="C:\Program Files\Java\jre7\lib\ext;C:\WINDOWS\Sun\Java\lib\ext"/><property name="sun.boot.class.path" value="C:\Program Files\Java\jre7\lib\resources.jar;C:\Program Files\Java\jre7\lib\rt.jar;C:\Program Files\Java\jre7\lib\sunrsasign.jar;C:\Program Files\Java\jre7\lib\jsse.jar;C:\Program Files\Java\jre7\lib\jce.jar;C:\Program Files\Java\jre7\lib\charsets.jar;C:\Program Files\Java\jre7\lib\jfr.jar;C:\Program Files\Java\jre7\classes"/><property name="java.vendor" value="Oracle Corporation"/><property name="file.separator" value="\"/><property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/"/><property name="sun.io.unicode.encoding" value="UnicodeLittle"/><property name="sun.cpu.endian" value="little"/><property name="sun.desktop" value="windows"/><property name="sun.cpu.isalist" value="amd64"/>
+    </properties>
+        <testcase classname="IntegrationTest" name="test" time="0.0">
+      <failure message="com.mongodb.MongoException$Network: can't call something : localhost/127.0.0.1:27017/play_basics" type="sbt.ForkMain$ForkError">
+              sbt.ForkMain$ForkError: com.mongodb.MongoException$Network: can't call something : localhost/127.0.0.1:27017/play_basics
+	at play.api.test.TestServer.start(Selenium.scala:146)
+	at play.test.Helpers.start(Helpers.java:401)
+	at play.test.Helpers.running(Helpers.java:430)
+	at IntegrationTest.test(IntegrationTest.java:20)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:47)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:44)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:271)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:70)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:50)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:238)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:63)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:236)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:53)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:229)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:309)
+	at org.junit.runners.Suite.runChild(Suite.java:127)
+	at org.junit.runners.Suite.runChild(Suite.java:26)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:238)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:63)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:236)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:53)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:229)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:309)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:160)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:138)
+	at com.novocode.junit.JUnitRunner.run(JUnitRunner.java:90)
+	at sbt.RunnerWrapper$1.runRunner2(FrameworkWrapper.java:220)
+	at sbt.RunnerWrapper$1.execute(FrameworkWrapper.java:233)
+	at sbt.ForkMain$Run.runTest(ForkMain.java:239)
+	at sbt.ForkMain$Run.runTestSafe(ForkMain.java:211)
+	at sbt.ForkMain$Run.runTests(ForkMain.java:187)
+	at sbt.ForkMain$Run.run(ForkMain.java:251)
+	at sbt.ForkMain.main(ForkMain.java:97)
+Caused by: sbt.ForkMain$ForkError: can't call something : localhost/127.0.0.1:27017/play_basics
+	at com.mongodb.DBTCPConnector.innerCall(DBTCPConnector.java:295)
+	at com.mongodb.DBTCPConnector.call(DBTCPConnector.java:257)
+	at com.mongodb.DBApiLayer$MyCollection.__find(DBApiLayer.java:310)
+	at com.mongodb.DBApiLayer$MyCollection.__find(DBApiLayer.java:295)
+	at com.mongodb.DBCollection.findOne(DBCollection.java:727)
+	at com.mongodb.DBCollection.findOne(DBCollection.java:669)
+	at com.mongodb.DBApiLayer$MyCollection.createIndex(DBApiLayer.java:364)
+	at com.mongodb.DBCollection.createIndex(DBCollection.java:484)
+	at com.mongodb.DBCollection.ensureIndex(DBCollection.java:560)
+	at com.mongodb.DBCollection.ensureIndex(DBCollection.java:511)
+	at db.ThingDB.init(ThingDB.java:32)
+	at Global.onStart(Global.java:15)
+	at play.core.j.JavaGlobalSettingsAdapter.onStart(JavaGlobalSettingsAdapter.scala:18)
+	at play.api.GlobalPlugin.onStart(GlobalSettings.scala:206)
+	at play.api.Play$$anonfun$start$1$$anonfun$apply$mcV$sp$1.apply(Play.scala:88)
+	at play.api.Play$$anonfun$start$1$$anonfun$apply$mcV$sp$1.apply(Play.scala:88)
+	at scala.collection.immutable.List.foreach(List.scala:318)
+	at play.api.Play$$anonfun$start$1.apply$mcV$sp(Play.scala:88)
+	at play.api.Play$$anonfun$start$1.apply(Play.scala:88)
+	at play.api.Play$$anonfun$start$1.apply(Play.scala:88)
+	at play.utils.Threads$.withContextClassLoader(Threads.scala:18)
+	at play.api.Play$.start(Play.scala:87)
+	at play.core.TestApplication.&lt;init&gt;(ApplicationProvider.scala:64)
+	at play.api.test.TestServer.start(Selenium.scala:142)
+	... 38 more
+Caused by: sbt.ForkMain$ForkError: couldn't connect to [localhost/127.0.0.1:27017] bc:java.net.ConnectException: Connection refused: connect
+	at com.mongodb.DBPort._open(DBPort.java:214)
+	at com.mongodb.DBPort.go(DBPort.java:107)
+	at com.mongodb.DBPort.call(DBPort.java:74)
+	at com.mongodb.DBTCPConnector.innerCall(DBTCPConnector.java:286)
+	... 61 more
+
+            </failure>
+    </testcase>
+        <system-out>
+          
+        </system-out>
+        <system-err>
+          
+        </system-err>
+      </testsuite>
